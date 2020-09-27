@@ -1,31 +1,4 @@
 #!/usr/bin/env python
-# coding: utf-8
-
-# # AutomateBirthdayEmails.py
-# Automate Birthday Emails using Python
-# 
-# ## Libraries
-# - Yagmail
-# - Numpy
-# - Pandas
-# - Datetime
-# 
-# 
-# ## Installation
-# - pip3/pip install yagmail
-# - On the Less Secure Apps of Your Google Account>https://myaccount.google.com/u/1/lesssecureapps
-# - And you are set.
-# 
-# ## Using
-# 
-# - Update the Birthday.csv File as per your data. 
-# - Add your own email-id and password in the code.
-# 
-# 
-# Both .py and notebook are provided.
-# 
-
-
 
 import yagmail 
 import pandas as pd
@@ -68,7 +41,7 @@ def ch_birth():
                 name=(data['Name'][f])
                 email=(data['email_id'][f])
                 print(name)
-                contents=("Happy Birthday {},".format(name),'\n',Wishes[np.random.randint(0,6)],yagmail.inline("B.jpg"))
+                contents=("Happy Birthday {},".format(name),'\n',Wishes[np.random.randint(0,6)],yagmail.inline("Images\B.jpg"))
                 email_send(contents,email)
                 
         f+=1  
