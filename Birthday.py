@@ -41,7 +41,7 @@ def ch_birth():
                 name=(data['Name'][f])
                 email=(data['email_id'][f])
                 print(name)
-                contents=("Happy Birthday {},".format(name),'\n',Wishes[np.random.randint(0,6)],yagmail.inline("Images\B.jpg"))
+                contents=("Happy Birthday {},".format(name),'\n',Wishes[np.random.randint(0,6)],yagmail.inline("Files\B.jpg"))
                 email_send(contents,email)
                 
         f+=1  
