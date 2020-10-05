@@ -7,7 +7,6 @@ from datetime import time
 from datetime import datetime
 import numpy as np
 from tkinter import *
-from PIL import ImageTk,Image
 from tkinter import filedialog
 import csv
 import os
@@ -15,6 +14,8 @@ import os
 HEIGHT=500
 WIDTH=700
 root = Tk()
+root.title('Automated Birthday Mail')
+root.iconbitmap('./icon/favicon.ico')
 
 #save 3 input in csv file
 def get_text(entry1, entry2, entry3):
