@@ -17,11 +17,11 @@ Wishes=['On this day, may your most cherished desires come true; i wish you succ
         'Happy birthday my Love. This is my prayer for you on this special day. May accomplish what you wish and earnestly seek.',
         ' I am blessed to have a friend like you, Loving thoughts and warm wishes on your birthday. Happy birthday!']
 
-#Fetching Data
+#Fetching the Data
 data=pd.read_csv("Birthdays.csv")
 data["Birthdate"]=pd.to_datetime(data["Birthdate"])
 
-#Email Sending
+#Sending Emails
 def email_send(content,emails):
     try:
         yag=yagmail.SMTP('UrEmailid','UrPassword')#Insert Your Email Id and Passowrd here.
