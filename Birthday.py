@@ -10,6 +10,7 @@ import numpy as np
 
 #Just to Make it Fancy. :)
 Wishes=['On this day, may your most cherished desires come true; i wish you success in life. Happy birthday!',
+        'May your life be filled with joy, laughter, and love. Happy birthday!',
         'We prayed to God to give us a special gift. He gave us you.  Dear you are a dream come true. Happy birthday!',
         'You are my happiness. Your memories bring a smile to my face.  Have a wonderful day',
         'Dear Friend, as you move into another year of your life, may the blessings and success follow you always. Happy birthday!',
