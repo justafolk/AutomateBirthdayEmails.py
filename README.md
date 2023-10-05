@@ -1,7 +1,7 @@
 # AutomateBirthdayEmails.py
 Modern problems, ............................................. require simple solutions!
 
-Hey there! So my AutomateBirthdayEmails.py project is a automated system which sends emails considering the birthdays data given. Though small, it turns out to be quite helpful. This system could be transformed to your own good in various means. 
+Hey there! So my AutomateBirthdayEmails.py project is a automated system which sends emails considering the birthday data given. Though small, it turns out to be quite helpful. This system could be transformed to your own good in various means. You can enter your own birthday list and then use it accordingly.
 
 ## Libraries
 - Yagmail
