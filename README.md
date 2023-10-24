@@ -1,5 +1,5 @@
 # AutomateBirthdayEmails.py
-Modern problems, ............................................. require simple solutions!
+Modern problems, ............................................. require simple solutions!!!
 
 Hey there! So my AutomateBirthdayEmails.py project is a automated system which sends emails considering the birthday data given. Though small, it turns out to be quite helpful. This system could be transformed to your own good in various means. You can enter your own birthday list and then use it accordingly.
 
@@ -21,6 +21,5 @@ Hey there! So my AutomateBirthdayEmails.py project is a automated system which s
 
 - Update the Birthday.csv File as per your data. 
 - Add your own email-id and password in the code.
-
 
 Both .py and notebook are provided.
