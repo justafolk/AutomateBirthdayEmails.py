@@ -1,50 +1,55 @@
+
 #!/usr/bin/env python
 
-import yagmail 
+import yagmail
 import pandas as pd
 from datetime import date
-from datetime import time
-from datetime import datetime
-import numpy as np
+import random
+import os
 
-#Birthday Message Just to Make it Fancy. :)
-Wishes=['On this day, may your most cherished desires come true; i wish you success in life. Happy birthday!',
-        'May your life be filled with joy, laughter, and love. Happy birthday!',
-        'We prayed to God to give us a special gift. He gave us you.  Dear you are a dream come true. Happy birthday!',
-        'You are my happiness. Your memories bring a smile to my face.  Have a wonderful day',
-        'Dear Friend, as you move into another year of your life, may the blessings and success follow you always. Happy birthday!',
-        'You are a very special person to me. Hope the New Year will not change, but have more memorable moments with you. Happy birthday!',
-        'Happy birthday my Love. This is my prayer for you on this special day. May accomplish what you wish and earnestly seek.',
-        ' I am blessed to have a friend like you, Loving thoughts and warm wishes on your birthday. Happy birthday!']
+# Load sensitive data from a config file
+from configparser import ConfigParser
+config = ConfigParser()
+config.read('config.ini')  # Create a 'config.ini' file with your email and password
 
-#Fetching the Data
-data=pd.read_csv("Birthdays.csv")
-data["Birthdate"]=pd.to_datetime(data["Birthdate"])
+Wishes = ['On this day, may your most cherished desires come true; I wish you success in life. Happy birthday!',
+          'May your life be filled with joy, laughter, and love. Happy birthday!',
+          # Add more wishes here...
+         ]
 
-#Sending Emails
-def email_send(content,emails):
+# Fetching the Data
+data = pd.read_csv("Birthdays.csv")
+data["Birthdate"] = pd.to_datetime(data["Birthdate"])
+
+# Sending Emails
+def email_send(name, email, content):
     try:
-        yag=yagmail.SMTP('UrEmailid','UrPassword')#Insert Your Email Id and Passowrd here.
-        yag.send(emails,"happy Birthday duh",content)
-        print("Email Has been sent")
-    except:
-        print("Nah")  
+        yag = yagmail.SMTP(config.get('Email', 'username'), config.get('Email', 'password'))
+        yag.send(email, "Happy Birthday!", content)
+        print(f"Email has been sent to {name}")
+    except Exception as e:
+        print(f"Failed to send email to {name}: {str(e)}")
 
-#Main Program
-def ch_birth():
-    x=date.today()
-    f=0
-    for e in data["Birthdate"]:
-        name=()
-        if e.month==x.month:
-            if e.day==x.day:
-                name=(data['Name'][f])
-                email=(data['email_id'][f])
-                print(name)
-                contents=("Happy Birthday {},".format(name),'\n',Wishes[np.random.randint(0,6)],yagmail.inline("Stuff\B.jpg"))
-                email_send(contents,email)
-                
-        f+=1  
+# Main Program
+def send_birthday_emails():
+    today = date.today()
+    for _, row in data.iterrows():
+        name = row['Name']
+        email = row['email_id']
+        birthdate = row['Birthdate']
 
-if __main__==__name__:
-    ch_birth()
+        if birthdate.month == today.month and birthdate.day == today.day:
+            random_wish = random.choice(Wishes)
+            email_content = (f"Happy Birthday, {name}!\n\n{random_wish}")
+            
+            # Add a random image from a directory or use a default image
+            image_folder = 'birthday_images'
+            if os.path.exists(image_folder):
+                image_files = os.listdir(image_folder)
+                random_image = os.path.join(image_folder, random.choice(image_files))
+                email_content += yagmail.inline(random_image)
+
+            email_send(name, email, email_content)
+
+if __name__ == "__main__":
+    send_birthday_emails()
